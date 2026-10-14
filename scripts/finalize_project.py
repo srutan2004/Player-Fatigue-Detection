@@ -189,6 +189,10 @@ Known-step, stationary-noise and constant software controls all pass. They estab
 behavior on synthetic data, not clinical performance. The end-to-end notebook executed all
 {reports["notebook"]["code_cells"]} code cells. The local standalone HTML dashboard rendered
 without JavaScript errors and all three player-selector options were checked.
+The React dashboard uses liquid-glass surfaces, dark/light themes and responsive layouts;
+it provides six evidence sections, window inspection, gait filters, pitch playback,
+searchable tables and data export. The latest browser QA passed
+{reports["dashboard"].get("passed_checks", 3)} checks, including offline operation.
 The continuous annotated 10-second video contains 250 source-aligned frames at 25 fps.
 
 | Deliverable | Location |
@@ -245,6 +249,13 @@ raw footage and tokens are excluded from Git and are not redistributed by these 
         ROOT / "requirements.txt",
         ROOT / "main.py",
         ROOT / "notebooks/pipeline_demo.ipynb",
+        ROOT / "dashboard/app.jsx",
+        ROOT / "dashboard/styles.css",
+        ROOT / "dashboard/build.mjs",
+        ROOT / "dashboard/package.json",
+        ROOT / "dashboard/package-lock.json",
+        ROOT / "dashboard/assets/app.js",
+        ROOT / "dashboard/README.md",
         study_path,
     ]
     artifact_paths = [
@@ -271,7 +282,7 @@ raw footage and tokens are excluded from Git and are not redistributed by these 
             "dataset_revision": study["revision"],
             "broadcast_revision": reports["broadcast"]["revision"],
             "model_hashes": "Phase 2 extraction and Phase 3 pose reports",
-            "note": "No initial Git commit; hashes capture the delivered working-tree snapshot.",
+            "note": "File hashes capture the delivered working-tree snapshot; original execution preceded the first Git commit.",
         },
     )
     return completion

@@ -120,6 +120,10 @@ Known-step, stationary-noise and constant software controls all pass. They estab
 behavior on synthetic data, not clinical performance. The end-to-end notebook executed all
 10 code cells. The local standalone HTML dashboard rendered
 without JavaScript errors and all three player-selector options were checked.
+The React dashboard uses liquid-glass surfaces, dark/light themes and responsive layouts;
+it provides six evidence sections, window inspection, gait filters, pitch playback,
+searchable tables and data export. The latest browser QA passed
+34 checks, including offline operation.
 The continuous annotated 10-second video contains 250 source-aligned frames at 25 fps.
 
 | Deliverable | Location |

@@ -163,6 +163,18 @@ uv run --no-sync python scripts/execute_notebook.py
 
 Open [dashboard.html](results/phase4/dashboard.html) in a browser. It is standalone and embeds Plotly locally; no server or CDN is required. Choose a player to inspect physical values, own-baseline changes, availability/status, early/late summaries and observed ground trajectories. The native 25-fps [annotated demo](results/phase4/annotated_demo.mp4) shows boxes, projected skeleton, valid speed and a minimap on a continuous ten-second excerpt.
 
+The dashboard now uses **React with a liquid-glass interface**, dark/light themes and a responsive mobile layout. Its six sections cover overview, movement, gait cycles, pitch mapping, evaluation and methods. Controls support player/period selection, physical or baseline-normalized measurements, chart-point exposure inspection, gait speed/leg filters, trajectory playback, occupancy mapping, searchable data tables and CSV/JSON export. Baseline availability, confidence qualifications, uncertainty, paired-test eligibility and model evaluation remain visible.
+
+For frontend development, use a current Node.js installation and the separate locked npm environment:
+
+```powershell
+npm --prefix dashboard ci
+npm --prefix dashboard run build
+uv run --no-sync python scripts/render_dashboard.py
+```
+
+The committed React bundle lets normal Python analysis runs regenerate the dashboard without requiring Node.js. `render_dashboard.py` refreshes presentation from saved results without repeating vision inference or trend analysis. When frame caches are absent in a fresh clone, the renderer can reuse embedded trajectories only from the same recorded analysis snapshot. Opening the finished HTML requires no installation or network access. See [dashboard/README.md](dashboard/README.md) for frontend details.
+
 The own-player baseline uses the first 600 elapsed seconds of the early clip, at least three eligible windows and 420 eligible movement seconds. A_blue_36 (389.88 seconds) and B_white_17 (two eligible windows) fail this gate; their normalized movement trends are unavailable. B_white_9 has an available baseline. Zero baselines never produce percentage changes.
 
 Descriptive trends use six or more contiguous nonoverlapping windows and lag-1 HAC uncertainty, with Holm correction per player. PELT requires eight windows, three before/after, a material downward change, and penalty agreement. Sensitivity checks smoothing 0.6/0.8/1.2 seconds, window sizes 120/180/240 seconds, and penalties 2/3/4 times log(n). Missing windows and clip boundaries break sequences. A candidate must survive smoothing and window changes; no supported onset remains in this study. Cadence and vertical motion have no universally negative fatigue direction and stay descriptive when available.

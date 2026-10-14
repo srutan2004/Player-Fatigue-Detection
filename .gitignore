@@ -27,6 +27,8 @@ results/**
 .pytest_cache/
 .ruff_cache/
 .ipynb_checkpoints/
+node_modules/
+npm-debug.log*
 Ultralytics/
 data/detector_subset/**
 
@@ -42,7 +44,7 @@ results/phase4/*
 !results/phase4/paired_tests.json
 !results/phase4/synthetic_controls.json
 !results/phase4/dashboard.html
-!results/phase4/dashboard_preview.png
+!results/phase4/dashboard*_preview.png
 !results/phase4/dashboard_qa.json
 !results/phase4/notebook_execution.json
 !results/phase4/verification.json

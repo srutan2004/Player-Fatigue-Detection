@@ -10,7 +10,7 @@
         "-q"
       ],
       "exit_code": 0,
-      "output": "...............................                                          [100%]\n============================== warnings summary ===============================\ntests/test_tracker_occlusion.py::test_tracker_preserves_identity_after_half_second_occlusion_at_low_detector_rate\n  D:\\Computer Vision\\tests\\test_tracker_occlusion.py:8: FutureWarning: The `ByteTrack` was deprecated since v0.28.0. It will be removed in v0.31.0.\n    tracker = sv.ByteTrack(track_activation_threshold=0.25, lost_track_buffer=30, frame_rate=12.5)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n31 passed, 1 warning in 3.96s\n"
+      "output": ".................................                                        [100%]\n============================== warnings summary ===============================\ntests/test_tracker_occlusion.py::test_tracker_preserves_identity_after_half_second_occlusion_at_low_detector_rate\n  D:\\Computer Vision\\tests\\test_tracker_occlusion.py:8: FutureWarning: The `ByteTrack` was deprecated since v0.28.0. It will be removed in v0.31.0.\n    tracker = sv.ByteTrack(track_activation_threshold=0.25, lost_track_buffer=30, frame_rate=12.5)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n33 passed, 1 warning in 7.08s\n"
     },
     {
       "command": [
@@ -39,7 +39,7 @@
         "--dry-run"
       ],
       "exit_code": 0,
-      "output": "Would use project environment at: .venv\nResolved 158 packages in 1ms\nChecked 138 packages in 431ms\nWould make no changes\n"
+      "output": "Would use project environment at: .venv\nResolved 158 packages in 2ms\nChecked 138 packages in 37ms\nWould make no changes\n"
     }
   ]
 }

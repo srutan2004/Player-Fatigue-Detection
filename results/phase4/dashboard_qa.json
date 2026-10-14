@@ -1,23 +1,150 @@
 {
   "status": "passed",
   "javascript_errors": [],
-  "player_selector_checks": [
+  "external_runtime_requests": [],
+  "checks": [
     {
-      "player": "A_blue_36",
-      "active": 1,
-      "charts": 1
+      "name": "scope_and_raw_metrics_retained",
+      "passed": true
     },
     {
-      "player": "B_white_17",
-      "active": 1,
-      "charts": 1
+      "name": "qualified_pair_values_and_missing_periods",
+      "passed": true
     },
     {
-      "player": "B_white_9",
-      "active": 1,
-      "charts": 1
+      "name": "player_selection_A_blue_36",
+      "passed": true
+    },
+    {
+      "name": "player_selection_B_white_17",
+      "passed": true
+    },
+    {
+      "name": "player_selection_B_white_9",
+      "passed": true
+    },
+    {
+      "name": "baseline_percent_matches_saved_value",
+      "passed": true
+    },
+    {
+      "name": "unavailable_baseline_is_not_zero_filled",
+      "passed": true
+    },
+    {
+      "name": "movement_metric_peak_speed",
+      "passed": true
+    },
+    {
+      "name": "movement_metric_p90_running_speed",
+      "passed": true
+    },
+    {
+      "name": "movement_metric_high_intensity_distance_per_minute",
+      "passed": true
+    },
+    {
+      "name": "chart_point_exposure_inspector",
+      "passed": true
+    },
+    {
+      "name": "dialog_keyboard_focus",
+      "passed": true
+    },
+    {
+      "name": "selected_csv_export_exact_scope",
+      "passed": true
+    },
+    {
+      "name": "gait_speed_axis_and_leg_filter",
+      "passed": true
+    },
+    {
+      "name": "gait_empty_state_preserves_missingness",
+      "passed": true
+    },
+    {
+      "name": "trajectory_breaks_preserved",
+      "passed": true
+    },
+    {
+      "name": "unprocessed_match_time_has_no_current_position",
+      "passed": true
+    },
+    {
+      "name": "occupancy_mode",
+      "passed": true
+    },
+    {
+      "name": "trajectory_play_pause",
+      "passed": true
+    },
+    {
+      "name": "evaluation_has_all_five_clips",
+      "passed": true
+    },
+    {
+      "name": "detector_and_pose_results_visible",
+      "passed": true
+    },
+    {
+      "name": "baseline_trend_sensitivity_candidate_and_test_tables",
+      "passed": true
+    },
+    {
+      "name": "full_window_and_status_tables",
+      "passed": true
+    },
+    {
+      "name": "window_search_filter",
+      "passed": true
+    },
+    {
+      "name": "mobile_no_page_overflow_overview",
+      "passed": true
+    },
+    {
+      "name": "mobile_no_page_overflow_movement",
+      "passed": true
+    },
+    {
+      "name": "mobile_no_page_overflow_gait",
+      "passed": true
+    },
+    {
+      "name": "mobile_no_page_overflow_pitch",
+      "passed": true
+    },
+    {
+      "name": "mobile_no_page_overflow_evaluation",
+      "passed": true
+    },
+    {
+      "name": "mobile_no_page_overflow_methods",
+      "passed": true
+    },
+    {
+      "name": "light_theme_and_dark_toggle",
+      "passed": true
+    },
+    {
+      "name": "deep_link_selection_survives_reload",
+      "passed": true
+    },
+    {
+      "name": "zero_external_runtime_requests",
+      "passed": true
+    },
+    {
+      "name": "zero_javascript_errors",
+      "passed": true
     }
   ],
+  "passed_checks": 34,
   "local_standalone_html": true,
-  "dashboard_sha256": "81ce657fced61b95b69bfb4af4dcb692767a87fe3c1a06dab5c5b998596dde92"
+  "viewport_checks": [
+    "1512x1180",
+    "390x844"
+  ],
+  "dashboard_sha256": "4fce47425f1444d642190f4e086fd671234b27e855db7ef49900b9b6907d7d1a"
 }

@@ -1,0 +1,19 @@
+{
+  "name": "stride-movement-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "format": "prettier --write app.jsx styles.css build.mjs package.json",
+    "format:check": "prettier --check app.jsx styles.css build.mjs package.json"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "prettier": "3.9.10"
+  }
+}
