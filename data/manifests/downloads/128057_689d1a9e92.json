@@ -1,0 +1,35 @@
+{
+  "created_utc": "2026-10-14T11:13:23.207099+00:00",
+  "git_commit": null,
+  "working_tree_dirty": true,
+  "repo_id": "atomscott/soccertrack-v2",
+  "revision": "325bd4c57ee8e135ab652f3921d274526ada496b",
+  "selected_size_bytes": 297367349,
+  "files": [
+    {
+      "remote_path": "mot/128057.txt",
+      "size_bytes": 6218634,
+      "sha256": "31bbd50e0a728626ca3b3863f8272995bfbd42ab7a5849eb5bc7ccc5df2acd17"
+    },
+    {
+      "remote_path": "mot/clips/128057.mp4",
+      "size_bytes": 291142915,
+      "sha256": "07a501b03b6e6a1fb1996175d49777413830a2b08833bfe54df8d9ad28417e03"
+    },
+    {
+      "remote_path": "raw/128057/128057_keypoints.json",
+      "size_bytes": 3604,
+      "sha256": "1856d7906084f89f56bfa68b2e09eb45e20bff892c50f0ecb445e1509b6b4e28"
+    },
+    {
+      "remote_path": "raw/128057/128057_camera_intrinsics.npz",
+      "size_bytes": 1996,
+      "sha256": "1ad3071516e4993969512f0da57f81c7ddc1a2f5293cb1a4d37bc5f82f96977a"
+    },
+    {
+      "remote_path": "raw/128057/128057_homography.npy",
+      "size_bytes": 200,
+      "sha256": "2ecc862dac9ff818155091d4b624ce65ac5cbdd00da2c4611770a72b478c9d0f"
+    }
+  ]
+}

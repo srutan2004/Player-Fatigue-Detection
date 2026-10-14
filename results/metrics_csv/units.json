@@ -1,0 +1,9 @@
+{
+  "avg_speed": "m/s",
+  "peak_speed": "m/s; supported ~1-second average",
+  "stride_frequency": "same-leg strides/s",
+  "stride_length": "meters; ground-path-per-cycle proxy",
+  "vertical_oscillation": "dimensionless body-height-normalized image proxy",
+  "knee_angle_range": "degrees; projected 2D robust excursion",
+  "high_intensity_distance_per_minute": "meters per valid observed minute at >=5.5m/s"
+}

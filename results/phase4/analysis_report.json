@@ -1,0 +1,417 @@
+{
+  "created_utc": "2026-10-14T17:34:04.638171+00:00",
+  "git_commit": null,
+  "working_tree_dirty": true,
+  "status": "completed",
+  "study": "D:\\Computer Vision\\data\\manifests\\study.json",
+  "study_scope": {
+    "distinct_minutes": 100.0,
+    "players": 3,
+    "matches": 2
+  },
+  "metrics": [
+    {
+      "metric": "avg_speed",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "unavailable_baseline",
+      "player_id": "A_blue_36",
+      "qualified_physical_windows": 21,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "peak_speed",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "unavailable_baseline",
+      "player_id": "A_blue_36",
+      "qualified_physical_windows": 21,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "p90_running_speed",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "unavailable_baseline",
+      "player_id": "A_blue_36",
+      "qualified_physical_windows": 21,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "high_intensity_distance_per_minute",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "unavailable_baseline",
+      "player_id": "A_blue_36",
+      "qualified_physical_windows": 21,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "stride_frequency",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "A_blue_36",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "stride_length",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "A_blue_36",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "vertical_oscillation",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "A_blue_36",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "knee_angle_range",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "A_blue_36",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "avg_speed",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "unavailable_baseline",
+      "player_id": "B_white_17",
+      "qualified_physical_windows": 11,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "peak_speed",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "unavailable_baseline",
+      "player_id": "B_white_17",
+      "qualified_physical_windows": 11,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "p90_running_speed",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "unavailable_baseline",
+      "player_id": "B_white_17",
+      "qualified_physical_windows": 11,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "high_intensity_distance_per_minute",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "unavailable_baseline",
+      "player_id": "B_white_17",
+      "qualified_physical_windows": 11,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "stride_frequency",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "B_white_17",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "stride_length",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "B_white_17",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "vertical_oscillation",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "B_white_17",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "knee_angle_range",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "B_white_17",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "avg_speed",
+      "eligible_windows": 12,
+      "longest_continuous_windows": 12,
+      "trends": [
+        {
+          "clip_name": "128057_first",
+          "windows": 12,
+          "start_time": 300.0,
+          "end_time": 1740.0,
+          "slope_pct_points_per_minute": -0.48238824429012545,
+          "ci_low": -1.5929870133935855,
+          "ci_high": 0.6282105248133345,
+          "p_value": 0.39459729778109576
+        }
+      ],
+      "candidates": [
+        {
+          "clip_name": "128057_first",
+          "boundary_time": 660.0,
+          "uncertainty_seconds": 120.0,
+          "drop_pct_points": -18.844768763619278,
+          "penalty_votes": 3,
+          "local_noise_pct_points": 8.947540901288523,
+          "sequence_windows": 12,
+          "sensitivity_assessed_settings": 6,
+          "sensitivity_supporting_settings": 2,
+          "supported": false
+        }
+      ],
+      "searched_sequences": 1,
+      "status": "quality_confounded",
+      "player_id": "B_white_9",
+      "qualified_physical_windows": 12,
+      "baseline_status": "available"
+    },
+    {
+      "metric": "peak_speed",
+      "eligible_windows": 12,
+      "longest_continuous_windows": 12,
+      "trends": [
+        {
+          "clip_name": "128057_first",
+          "windows": 12,
+          "start_time": 300.0,
+          "end_time": 1740.0,
+          "slope_pct_points_per_minute": 0.16557817379590967,
+          "ci_low": -1.3152076273736168,
+          "ci_high": 1.6463639749654362,
+          "p_value": 0.8265263386530368
+        }
+      ],
+      "candidates": [],
+      "searched_sequences": 1,
+      "status": "no_supported_change",
+      "player_id": "B_white_9",
+      "qualified_physical_windows": 12,
+      "baseline_status": "available"
+    },
+    {
+      "metric": "p90_running_speed",
+      "eligible_windows": 12,
+      "longest_continuous_windows": 12,
+      "trends": [
+        {
+          "clip_name": "128057_first",
+          "windows": 12,
+          "start_time": 300.0,
+          "end_time": 1740.0,
+          "slope_pct_points_per_minute": -0.030990925270389158,
+          "ci_low": -1.233494053773918,
+          "ci_high": 1.17151220323314,
+          "p_value": 0.9597142151306627
+        }
+      ],
+      "candidates": [],
+      "searched_sequences": 1,
+      "status": "no_supported_change",
+      "player_id": "B_white_9",
+      "qualified_physical_windows": 12,
+      "baseline_status": "available"
+    },
+    {
+      "metric": "high_intensity_distance_per_minute",
+      "eligible_windows": 12,
+      "longest_continuous_windows": 12,
+      "trends": [
+        {
+          "clip_name": "128057_first",
+          "windows": 12,
+          "start_time": 300.0,
+          "end_time": 1740.0,
+          "slope_pct_points_per_minute": 0.8232892828272305,
+          "ci_low": -6.458260749599409,
+          "ci_high": 8.10483931525387,
+          "p_value": 0.8246225180081314
+        }
+      ],
+      "candidates": [],
+      "searched_sequences": 1,
+      "status": "no_supported_change",
+      "player_id": "B_white_9",
+      "qualified_physical_windows": 12,
+      "baseline_status": "available"
+    },
+    {
+      "metric": "stride_frequency",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "B_white_9",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "stride_length",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "B_white_9",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "vertical_oscillation",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "B_white_9",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    },
+    {
+      "metric": "knee_angle_range",
+      "eligible_windows": 0,
+      "longest_continuous_windows": 0,
+      "trends": [],
+      "candidates": [],
+      "searched_sequences": 0,
+      "status": "insufficient_data",
+      "player_id": "B_white_9",
+      "qualified_physical_windows": 0,
+      "baseline_status": "insufficient_baseline_exposure"
+    }
+  ],
+  "substitution_context": [
+    {
+      "player_id": "B_white_9",
+      "metric": "avg_speed",
+      "boundary_time": 660.0,
+      "substitution_status": "unknown",
+      "occurs_before_substitution": null
+    }
+  ],
+  "substitution_metadata": "none verified",
+  "units": {
+    "avg_speed": [
+      "Average speed",
+      "m/s",
+      -1
+    ],
+    "peak_speed": [
+      "Sustained peak speed",
+      "m/s",
+      -1
+    ],
+    "p90_running_speed": [
+      "Running speed, 90th percentile",
+      "m/s",
+      -1
+    ],
+    "high_intensity_distance_per_minute": [
+      "High-intensity distance rate",
+      "m/observed min",
+      -1
+    ],
+    "stride_frequency": [
+      "Same-leg cadence",
+      "cycles/s",
+      0
+    ],
+    "stride_length": [
+      "Stride-length proxy",
+      "m/cycle",
+      -1
+    ],
+    "vertical_oscillation": [
+      "Projected vertical-motion proxy",
+      "body-height fraction",
+      0
+    ],
+    "knee_angle_range": [
+      "Knee flexion excursion",
+      "degrees",
+      -1
+    ]
+  },
+  "sensitivity_settings": "0.6/0.8/1.2-second smoothing x 120/180/240-second nonoverlap windows; 2/3/4-log(n) penalties",
+  "gait_sensitivity": "unavailable: no eligible primary gait windows; gait sampling kept fixed",
+  "inference": "descriptive HAC lag-1 trends; Holm per player; stable material downward PELT changes only",
+  "not_a_physiological_fatigue_diagnosis": true,
+  "comparison": "selected early/late 25-minute segments; not complete half averages",
+  "window_boundary": "Incomplete final windows excluded; full-clip coverage gate still applies"
+}

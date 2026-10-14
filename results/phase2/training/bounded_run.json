@@ -1,0 +1,42 @@
+{
+  "created_utc": "2026-10-14T11:41:16.798254+00:00",
+  "git_commit": null,
+  "working_tree_dirty": true,
+  "status": "completed",
+  "epochs_requested": 15,
+  "maximum_epochs": 20,
+  "maximum_minutes": 90,
+  "subset_manifest_sha256": "b6a61c28d29c6528d824c601de5b4d4708ec2e88002ee603155174da6f190692",
+  "pretrained_validation": {
+    "map50": 0.9530567954942425,
+    "map50_95": 0.7104954904247156,
+    "precision": 0.9580404742955151,
+    "recall": 0.9037328094302554
+  },
+  "adapted_validation": {
+    "map50": 0.9511464935550379,
+    "map50_95": 0.6802695820954655,
+    "precision": 0.9329371800937822,
+    "recall": 0.9019176433188921
+  },
+  "selection": {
+    "weight": "D:\\Computer Vision\\models\\yolov8n.pt",
+    "sha256": "f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36",
+    "rule": "highest_validation_map50_95"
+  },
+  "chosen_test": {
+    "map50": 0.9309996722025147,
+    "map50_95": 0.7232309425538105,
+    "precision": 0.94683237264001,
+    "recall": 0.8997613365155132
+  },
+  "baseline_test": {
+    "map50": 0.9309996722025147,
+    "map50_95": 0.7232309425538105,
+    "precision": 0.94683237264001,
+    "recall": 0.8997613365155132
+  },
+  "elapsed_seconds": 257.9884585000109,
+  "epochs_completed": 15,
+  "label_quality_caveat": "MOT source alignment sampled; every additional model proposal visually reviewed; tiny background people may remain unlabeled, and model-assisted labels can bias AP."
+}

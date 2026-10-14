@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "javascript_errors": [],
+  "player_selector_checks": [
+    {
+      "player": "A_blue_36",
+      "active": 1,
+      "charts": 1
+    },
+    {
+      "player": "B_white_17",
+      "active": 1,
+      "charts": 1
+    },
+    {
+      "player": "B_white_9",
+      "active": 1,
+      "charts": 1
+    }
+  ],
+  "local_standalone_html": true,
+  "dashboard_sha256": "81ce657fced61b95b69bfb4af4dcb692767a87fe3c1a06dab5c5b998596dde92"
+}

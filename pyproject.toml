@@ -1,0 +1,49 @@
+[project]
+name = "player-movement-analysis"
+version = "0.1.0"
+description = "Vision-based football movement and gait feasibility pipeline"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "torch==2.8.0", "torchvision==0.23.0",
+  "ultralytics>=8.3,<9", "supervision>=0.25,<0.31",
+  "opencv-python>=4.11,<5", "numpy>=2,<3", "pandas>=2.2,<3",
+  "scipy>=1.15,<2", "statsmodels>=0.14,<1", "ruptures>=1.1.9,<2",
+  "matplotlib>=3.10,<4", "plotly>=6,<7", "pyarrow>=19,<24",
+  "pyyaml>=6,<7", "tqdm>=4.67,<5", "psutil>=7,<8",
+  "huggingface-hub>=0.34,<2",
+  "ijson>=3.4,<4",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
+notebook = ["jupyterlab>=4,<5", "ipykernel>=6,<8"]
+
+[project.scripts]
+movement = "src.cli:main"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu128", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu128", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

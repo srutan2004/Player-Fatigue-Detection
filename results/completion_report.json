@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-10-14T17:35:05.110777+00:00",
+  "git_commit": null,
+  "working_tree_dirty": true,
+  "status": "completed",
+  "completed_phases": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "distinct_footage_minutes": 100,
+  "players": 3,
+  "matches": 2,
+  "long_segments": 4,
+  "broadcast_audit_clips": 5,
+  "supported_onset_candidates": 0,
+  "eligible_gait_windows": 0,
+  "qualified_paired_movement_players": 1,
+  "implementation_complete": true,
+  "physiological_fatigue_validated": false,
+  "analysis_status_counts": {
+    "insufficient_data": 12,
+    "unavailable_baseline": 8,
+    "no_supported_change": 3,
+    "quality_confounded": 1
+  },
+  "checks": "results/phase4/verification.json",
+  "report": "FINAL_REPORT.md",
+  "dashboard": "results/phase4/dashboard.html"
+}

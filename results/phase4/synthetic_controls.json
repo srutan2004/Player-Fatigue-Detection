@@ -1,0 +1,33 @@
+{
+  "controls": [
+    {
+      "name": "known_downward_step",
+      "passed": true,
+      "expected_change": true,
+      "candidates": [
+        {
+          "clip_name": "synthetic",
+          "boundary_time": 1440.0,
+          "uncertainty_seconds": 120.0,
+          "drop_pct_points": -25.3102825931769,
+          "penalty_votes": 3,
+          "local_noise_pct_points": 1.2503715980057186,
+          "sequence_windows": 24
+        }
+      ]
+    },
+    {
+      "name": "stationary_noise",
+      "passed": true,
+      "expected_change": false,
+      "candidates": []
+    },
+    {
+      "name": "constant",
+      "passed": true,
+      "expected_change": false,
+      "candidates": []
+    }
+  ],
+  "not_real_match_data": true
+}

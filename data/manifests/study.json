@@ -1,0 +1,86 @@
+{
+  "revision": "325bd4c57ee8e135ab652f3921d274526ada496b",
+  "status": "completed",
+  "distinct_footage_minutes": 100,
+  "players": 3,
+  "identity_mode": "annotation_assisted_with_independent_detected_ground_anchors",
+  "selection_reason": "outfield IDs present in both halves, near-side source resolution; not selected on decline",
+  "supplementary_pilot_player": "A_blue_21 (early only; excluded from paired cohort)",
+  "clips": [
+    {
+      "clip_name": "117093_first",
+      "match_id": "117093",
+      "half": 1,
+      "start_seconds": 300,
+      "duration_seconds": 1500,
+      "match_time_offset_seconds": 0,
+      "targets": [
+        {
+          "player_id": "A_blue_36",
+          "reference_player_id": "473125"
+        }
+      ],
+      "config": "configs/study_117093_first.yaml"
+    },
+    {
+      "clip_name": "117093_second",
+      "match_id": "117093",
+      "half": 2,
+      "start_seconds": 900,
+      "duration_seconds": 1500,
+      "match_time_offset_seconds": 2700,
+      "targets": [
+        {
+          "player_id": "A_blue_36",
+          "reference_player_id": "473125"
+        }
+      ],
+      "config": "configs/study_117093_second.yaml"
+    },
+    {
+      "clip_name": "128057_first",
+      "match_id": "128057",
+      "half": 1,
+      "start_seconds": 300,
+      "duration_seconds": 1500,
+      "match_time_offset_seconds": 0,
+      "targets": [
+        {
+          "player_id": "B_white_9",
+          "reference_player_id": "506463"
+        },
+        {
+          "player_id": "B_white_17",
+          "reference_player_id": "506460"
+        }
+      ],
+      "config": "configs/study_128057_first.yaml"
+    },
+    {
+      "clip_name": "128057_second",
+      "match_id": "128057",
+      "half": 2,
+      "start_seconds": 900,
+      "duration_seconds": 1500,
+      "match_time_offset_seconds": 2700,
+      "targets": [
+        {
+          "player_id": "B_white_9",
+          "reference_player_id": "506463"
+        },
+        {
+          "player_id": "B_white_17",
+          "reference_player_id": "506460"
+        }
+      ],
+      "config": "configs/study_128057_second.yaml"
+    }
+  ],
+  "pose_model": "yolov8m-pose.pt",
+  "pose_selection": "Fixed ten-minute audit: improved confidence coverage plus inspected anatomical overlays; no fine-tuning.",
+  "processing_revision": "shadow_aware_kit_and_visible_tracklet_continuity_v3",
+  "identity_continuity": "At most 0.8s since reference verification; still-observed same ID only, <=4.5m reference residual, <=12*dt+0.3m motion, no severe overlap or conflicting reference link.",
+  "kit_filter": "Only dominant confident palettes constrain team assignment; mixed/cool-shadow palettes remain unknown.",
+  "execution_status": "completed_phases_1_2_3_4",
+  "selection_status": "locked_before_longitudinal_metrics"
+}

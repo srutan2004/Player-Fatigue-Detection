@@ -1,0 +1,8 @@
+{
+  "status": "proposed_pending_overlay_verification",
+  "blocks": [
+    {"match_id": "117093", "half": 1, "start_seconds": 0, "end_seconds": 150, "split": "train", "video": "data/hub/mot/clips/117093.mp4", "reference_index": "data/processed/117093_mot.sqlite"},
+    {"match_id": "117093", "half": 1, "start_seconds": 180, "end_seconds": 240, "split": "validation", "video": "data/hub/mot/clips/117093.mp4", "reference_index": "data/processed/117093_mot.sqlite"},
+    {"match_id": "128057", "half": 1, "start_seconds": 0, "end_seconds": 240, "split": "test", "video": "data/hub/mot/clips/128057.mp4", "reference_index": "data/processed/128057_mot.sqlite"}
+  ]
+}

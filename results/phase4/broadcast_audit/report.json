@@ -1,0 +1,62 @@
+{
+  "created_utc": "2026-10-14T17:20:30.540067+00:00",
+  "git_commit": null,
+  "working_tree_dirty": true,
+  "status": "completed",
+  "dataset": "SoccerNet/SN-GSR-2024",
+  "revision": "3cc710eb6d53a23350a3d2863311c1c0a2e645d7",
+  "source_manifest": "D:\\Computer Vision\\data\\processed\\broadcast_audit\\manifest.json",
+  "clips": [
+    {
+      "clip": "SNGS-116",
+      "sampled_frames": 60,
+      "annotated_player_boxes": 814,
+      "player_recall_iou50": 0.8525798525798526,
+      "static_map_valid_fraction": 0.08333333333333333,
+      "pose_crops": 20,
+      "six_joint_confident_fraction": 0.95
+    },
+    {
+      "clip": "SNGS-117",
+      "sampled_frames": 60,
+      "annotated_player_boxes": 606,
+      "player_recall_iou50": 0.9174917491749175,
+      "static_map_valid_fraction": 0.016666666666666666,
+      "pose_crops": 20,
+      "six_joint_confident_fraction": 1.0
+    },
+    {
+      "clip": "SNGS-118",
+      "sampled_frames": 60,
+      "annotated_player_boxes": 752,
+      "player_recall_iou50": 0.8789893617021277,
+      "static_map_valid_fraction": 0.03333333333333333,
+      "pose_crops": 20,
+      "six_joint_confident_fraction": 1.0
+    },
+    {
+      "clip": "SNGS-119",
+      "sampled_frames": 60,
+      "annotated_player_boxes": 564,
+      "player_recall_iou50": 0.9414893617021277,
+      "static_map_valid_fraction": 0.05,
+      "pose_crops": 20,
+      "six_joint_confident_fraction": 1.0
+    },
+    {
+      "clip": "SNGS-120",
+      "sampled_frames": 60,
+      "annotated_player_boxes": 794,
+      "player_recall_iou50": 0.9269521410579346,
+      "static_map_valid_fraction": 0.05,
+      "pose_crops": 20,
+      "six_joint_confident_fraction": 0.95
+    }
+  ],
+  "sampled_frames": 300,
+  "elapsed_seconds": 16.74064460000045,
+  "purpose": "separate short broadcast stress audit, no longitudinal fatigue inference",
+  "limitations": "Sampled detection recall only, no all-person precision/IDF1/HOTA/joint ground truth. 25 fps time assumption matches released 750-frame/30-second clips; no cadence at sampled rate.",
+  "static_mapping": "CameraGuard tests hypothetical fixed first-frame mapping; no broadcast world calibration is fitted or used.",
+  "pose_selection": "Two tallest matched players every sixth sampled frame, fixed before confidence measurement"
+}

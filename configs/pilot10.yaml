@@ -1,0 +1,42 @@
+dataset:
+  match_id: '117093'
+  name: soccertrack_v2
+  revision: 325bd4c57ee8e135ab652f3921d274526ada496b
+models_dir: models
+output_dir: results/phase2/study/117093_first
+pilot:
+  crop_padding: 0.1
+  detection_confidence: 0.15
+  detector: yolov8n.pt
+  device: cuda:0
+  duration_seconds: 600
+  imgsz: 1920
+  joint_confidence: 0.5
+  max_audit_crops: 25
+  pose_model: yolov8s-pose.pt
+  sample_fps: 25
+  start_seconds: 300
+  tile_size: null
+pipeline:
+  clip_name: 117093_first
+  extract_pose: false
+  ground_mapping: results/phase2/calibration/117093.json
+  pose_mode: running_bouts
+  reference_assisted_identity: true
+  reference_index: data/processed/117093_first.sqlite
+  targets:
+  - player_id: A_blue_21
+    reference_player_id: '306233'
+  - player_id: A_blue_36
+    reference_player_id: '473125'
+  team_colors:
+    left: blue
+    right: white
+  tracking_fps: 12.5
+project_root: ..
+video:
+  annotations: null
+  calibration: data/hub/raw/117093/117093_keypoints.json
+  half: 1
+  match_time_offset_seconds: 0
+  path: data/hub/videos/117093/117093_panorama_1st_half.mp4

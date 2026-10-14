@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-10-14T11:18:06.422595+00:00",
+  "git_commit": null,
+  "working_tree_dirty": true,
+  "repo_id": "atomscott/soccertrack-v2",
+  "revision": "325bd4c57ee8e135ab652f3921d274526ada496b",
+  "selected_size_bytes": 12282058425,
+  "files": [
+    {
+      "remote_path": "videos/128057/128057_panorama_1st_half.mp4",
+      "size_bytes": 3312813154,
+      "sha256": "3bc95a7bb31baec68be8d737e7b99fa083c595ba856e879106223a26548cbf23"
+    },
+    {
+      "remote_path": "videos/128057/128057_panorama_2nd_half.mp4",
+      "size_bytes": 3450936711,
+      "sha256": "e985c6b9ba50122d0a47074cdbc2436ef3c5a425ae3efe2cb7508a13e6fadaca"
+    },
+    {
+      "remote_path": "gsr/128057/128057_1st.json",
+      "size_bytes": 2705160738,
+      "sha256": "cea065a10093918a6b3b28a210633d8d1c1e7cb273ad91c324a98098699b23c6"
+    },
+    {
+      "remote_path": "gsr/128057/128057_2nd.json",
+      "size_bytes": 2813147822,
+      "sha256": "3a5f5b344f97e9512eb395b0fb1c942f6b3a53f0c3c4397dd7840bacd8a3cc7a"
+    }
+  ]
+}

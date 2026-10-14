@@ -1,0 +1,31 @@
+# Phase 1 samples assess feasibility; they must not be used to estimate cadence.
+project_root: ..
+output_dir: results/phase1/pilot
+models_dir: models
+dataset:
+  name: soccertrack_v2
+  repo_id: atomscott/soccertrack-v2
+  revision: 325bd4c57ee8e135ab652f3921d274526ada496b
+  release_tag: v1.2
+  match_id: '117093'
+video:
+  path: data/hub/videos/117093/117093_panorama_1st_half.mp4
+  half: 1
+  match_time_offset_seconds: 0
+  annotations: data/hub/gsr/117093/117093_1st.json
+  calibration: data/hub/raw/117093/117093_keypoints.json
+pilot:
+  start_seconds: 300
+  duration_seconds: 60
+  sample_fps: 2
+  detector: yolov8n.pt
+  pose_model: yolov8s-pose.pt
+  device: cuda:0
+  imgsz: 1280
+  detection_confidence: 0.15
+  joint_confidence: 0.5
+  crop_padding: 0.10
+  max_audit_crops: 25
+  # Optional native-resolution tiled comparison; significantly slower.
+  tile_size: null
+  tile_overlap: 0.15
