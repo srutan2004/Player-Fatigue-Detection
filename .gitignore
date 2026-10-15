@@ -65,8 +65,6 @@ results/metrics_csv/*
 results/plots/*
 !results/plots/.gitkeep
 !results/plots/*.png
-!results/plots/phase4/
-!results/plots/phase4/*.png
 !results/phase2/
 results/phase2/*
 !results/phase2/calibration/

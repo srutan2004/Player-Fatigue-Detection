@@ -1,18 +1,67 @@
-# Football movement and gait analysis
+# Player Fatigue Detection from Football Video
 
-BCSE407L Computer Vision mini-project. **All four phases are implemented and executed:** setup, dataset intake, one detector experiment, tracking, calibration, native-rate pose, quality-gated metrics, decline analysis, proxy validation and interactive reporting. The study covers **three outfield players, two matches and four 25-minute segments**, with a separate five-clip broadcast audit. See [FINAL_REPORT.md](FINAL_REPORT.md) for the final findings and [PHASE_1_3_REPORT.md](PHASE_1_3_REPORT.md) for measurement details.
+BCSE407L Computer Vision mini-project: pretrained person detection and pose estimation, player tracking, calibrated field movement, gait features and statistical analysis of fatigue-related movement changes. The completed study covers **three players, two matches and four 25-minute segments**, with a separate five-clip broadcast audit.
 
-The software is complete; physiological fatigue is not validated. Only one player has qualified early/late movement periods, and no nonoverlapping gait windows pass the exposure gate. Unsupported results remain missing. The original requirement to force a change point for every metric would produce misleading findings, so the revised roadmap allows insufficient data and no supported change.
+The **React liquid-glass dashboard** provides six interactive evidence views, dark/light themes, responsive layouts, player/period filters, chart inspection, pitch playback and data export.
 
-The roadmap is [FOUR_PHASE_IMPLEMENTATION_PLAN.md](FOUR_PHASE_IMPLEMENTATION_PLAN.md); methodological detail is in [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
+![React dashboard preview](results/phase4/dashboard_preview.png)
 
-![Interactive dashboard preview](results/phase4/dashboard_preview.png)
+## Open the dashboard
 
-The repository includes source, clean notebooks, configuration, fitted study calibration, small derived result tables, plots and the standalone HTML dashboard. Download [dashboard.html](results/phase4/dashboard.html) and open it locally; GitHub displays HTML source rather than running the dashboard. Raw dataset files, pretrained weight binaries, native-frame caches, executed notebooks and footage-based previews stay local. Their absence from a fresh clone is expected; the dataset and setup steps below are required to rerun inference. This repository does not redistribute match footage.
+The finished dashboard is a **single offline HTML file**. No Python, Node.js, GPU or web server is needed just to view it.
 
-## Setup
+1. Clone/download this repository, or download the [dashboard HTML](https://github.com/srutan2004/Player-Fatigue-Detection/raw/refs/heads/main/results/phase4/dashboard.html).
+2. Open `results/phase4/dashboard.html` in a modern browser. GitHub's file viewer shows source code; open the downloaded file locally.
 
-Tested: RTX 4060 Laptop GPU (8 GB), Ryzen 7 7840HS, nominal 16 GB RAM, Python 3.12. CUDA PyTorch 2.8.0/torchvision 0.23.0 are pinned to the explicit CUDA 12.8 index. Runtime libraries ship with the wheels; a compatible NVIDIA driver is required.
+In the existing Windows workspace:
+
+```powershell
+Set-Location 'D:\Computer Vision'
+Start-Process '.\results\phase4\dashboard.html'
+```
+
+| Dashboard section | What you can inspect |
+|---|---|
+| Overview | Qualified movement summaries, timeline, early/late bars and coverage |
+| Movement | Eight metrics, physical/baseline modes, window details and analysis status |
+| Gait explorer | Individual cycles, leg/speed filters and running-speed relationships |
+| Pitch map | Observed trajectories, gaps, time scrubbing, playback and sampled occupancy |
+| Evaluation | Detector, tracker, calibration, broadcast and software-control results |
+| Study & methods | Dataset scope, models, thresholds, baselines, sensitivity and eligibility |
+
+The dashboard embeds React, Plotly, styles and saved evidence. Its controls explore those results; new-video inference runs through the Python pipeline.
+
+## Project documentation
+
+| Document | Read it for |
+|---|---|
+| [explanation.md](explanation.md) | Full working explanation: basics through models, data, equations, statistics, graphs and viva questions |
+| [FINAL_REPORT.md](FINAL_REPORT.md) | Recorded study findings and completed deliverables |
+| [PHASE_1_3_REPORT.md](PHASE_1_3_REPORT.md) | Measurement-stage audits, hardware and model choices |
+| [PRESENTATION_CONTENT.md](PRESENTATION_CONTENT.md) | Twelve-slide presentation text and suggested visuals |
+| [dashboard/README.md](dashboard/README.md) | React source, build and browser QA |
+| [LIMITATIONS.md](LIMITATIONS.md) | Scientific and measurement boundaries |
+| [FOUR_PHASE_IMPLEMENTATION_PLAN.md](FOUR_PHASE_IMPLEMENTATION_PLAN.md) | Four-phase roadmap |
+| [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) | Original detailed implementation design |
+
+## Models and recorded results
+
+The final models are **pretrained YOLOv8n** for person detection and **pretrained YOLOv8m-Pose** for joints. ByteTrack associates detections into tracklets. Validated field geometry converts detected ground anchors to meters; feature engineering and time-series methods summarize the observations. There is no trained fatigue classifier.
+
+One detector fine-tuning experiment used **387 train / 100 validation / 100 held-out-match tiles**, 15 epochs, batch 4, frozen early layers and mixed precision. It took approximately **258 seconds including evaluations** on the RTX 4060 Laptop GPU. Pretrained validation mAP@0.50:0.95 was **0.7105**, versus **0.6803** after adaptation, so the pretrained detector was retained. Pose was not fine-tuned.
+
+| Selected detector, held-out 100-image test | Result |
+|---|---:|
+| Precision | 94.68% |
+| Recall | 89.98% |
+| mAP@0.50 | 93.10% |
+| mAP@0.50:0.95 | 72.32% |
+
+These scores evaluate person detection. The qualified Blue #36 early/late case shows **12.5% lower observed average speed** and **37.0% lower high-intensity distance rate** in the selected late segment. Only one player qualifies for the paired movement comparison; accepted cycles do not form eligible longitudinal gait windows. No supported fatigue-onset time is claimed. Full evidence and statistical interpretation are in [explanation.md](explanation.md) and the final report.
+
+## Python setup
+
+Tested on **RTX 4060 Laptop GPU, 8 GB VRAM; Ryzen 7 7840HS; 16 GB RAM; Python 3.12**. Install [uv](https://docs.astral.sh/uv/getting-started/installation/), Git and a compatible NVIDIA driver.
 
 ```powershell
 git clone https://github.com/srutan2004/Player-Fatigue-Detection.git
@@ -21,20 +70,23 @@ uv sync --locked --group dev --group notebook
 uv run --no-sync python -m src.cli check-environment --smoke-models
 ```
 
-Alternatively use `scripts/setup.ps1`. Actual CUDA multiplication, torchvision NMS and pretrained forward passes are checked. `uv.lock` is authoritative; `requirements.txt` is a pip fallback after installing compatible CUDA torch/torchvision. YOLOv8-Pose supplies anatomy; MediaPipe is unnecessary.
+`scripts/setup.ps1` also installs the runtime/dev environment and runs checks. CUDA PyTorch 2.8.0 and torchvision 0.23.0 use the explicit CUDA 12.8 wheel index. The checks exercise CUDA multiplication, torchvision NMS and pretrained inference. `uv.lock` is authoritative; `requirements.txt` is a pip fallback after installing compatible CUDA torch/torchvision. The notebook group is needed for Jupyter.
 
-## Dataset
+## Dataset and reproducibility
 
-The principal source is [SoccerTrack v2](https://huggingface.co/datasets/atomscott/soccertrack-v2), release v1.2 pinned to `325bd4c57ee8e135ab652f3921d274526ada496b`. Accept its access conditions and authenticate in the terminal:
+The main source is [SoccerTrack v2](https://huggingface.co/datasets/atomscott/soccertrack-v2), v1.2, pinned to `325bd4c57ee8e135ab652f3921d274526ada496b`. Selected downloads include both panoramic halves and GSR annotations of matches **117093 and 128057**, their curated MOT clips/labels and camera assets.
+
+- Main source files: **25.29 GB**, including approximately **184.05 minutes** of panoramic video.
+- Longitudinal study: **100 distinct footage minutes**, three players, 225,000 native target-frame records and 72 nonoverlapping analysis windows.
+- Separate [SoccerNet-GSR](https://huggingface.co/datasets/SoccerNet/SN-GSR-2024) broadcast audit: five test clips, 300 sampled images, approximately **175 MB extracted**. Selected archive members were fetched; the complete test ZIP was not downloaded.
+- Detector training/validation use Match A; detector testing uses Match B. Broadcast samples are a separate audit, not training or longitudinal fatigue data.
+
+Exact source files, sizes and hashes are in [data/manifests/downloads/](data/manifests/downloads/); the cohort is fixed in [study.json](data/manifests/study.json). Files retain upstream paths under `data/hub/`, avoiding duplicate multi-GB copies. Source schema details are documented by the [upstream project](https://github.com/AtomScott/SoccerTrack-v2/blob/main/docs/format-gsr.md).
+
+Accept the dataset's access conditions and authenticate in the terminal. Browser login alone does not authenticate Python:
 
 ```powershell
 uv run --no-sync hf auth login
-uv run --no-sync python -m src.cli dataset-probe --match 117093
-```
-
-Browser login alone does not authenticate Python. Enter credentials privately in the terminal; no tokens belong in reports or configs. Selected files are both halves/GSR annotations of 117093 and 128057, camera assets and curated MOT clips/boxes. Files keep upstream paths under `data/hub/`, avoiding duplicate multi-GB video copies. Download manifests record hashes, sizes and the pinned commit.
-
-```powershell
 uv run --no-sync python -m src.cli dataset-probe --match 128057 --output results/phase1/dataset_128057.json
 uv run --no-sync python -m src.cli dataset-download --probe results/phase1/dataset_128057.json --max-gib 12 `
   --file videos/128057/128057_panorama_1st_half.mp4 `
@@ -43,129 +95,45 @@ uv run --no-sync python -m src.cli dataset-download --probe results/phase1/datas
   --file gsr/128057/128057_2nd.json
 ```
 
-Downloads are explicitly bounded and resumable. Multi-GB JSON is streamed into SQLite. Source overlays verified GSR one-based suffix indices, MOT zero-based indices, and video PTS starting at one second. Subtracting the PTS origin avoids annotation shifts. GSR box semantics differ from anatomical MOT boxes; GSR boxes are not training labels. Inspect the actual release and [upstream schema notes](https://github.com/AtomScott/SoccerTrack-v2/blob/main/docs/format-gsr.md).
-
-For a fresh clone, acquire the required videos and annotations for both matches. Build each reference index using `reference-index SOURCE_JSON --output data/processed/MATCH_first.sqlite --index-base 1` (use `MATCH_second.sqlite` for the second half). The exact selected upstream files and hashes are recorded in `data/manifests/downloads/`. Remove the `pipeline.cached_tracks` setting from the four study YAML files when those local tracker caches are absent, so extraction performs fresh detection. The published fitted calibration mappings can be reused for the corresponding unchanged source cameras. Study identity association requires the reference indexes. The included result tables let you inspect the final dashboard without downloading the footage; recomputing sensitivity requires local frame-level caches generated by the study workflow.
-
-## Phase 1 and detector experiment
+Enter credentials privately. Downloads are bounded and resumable. For a full rerun, acquire the corresponding files for Match A plus the required MOT/camera assets listed in the manifests. Build reference indexes for both matches/halves, for example:
 
 ```powershell
+uv run --no-sync python -m src.cli reference-index data/hub/gsr/128057/128057_1st.json `
+  --output data/processed/128057_first.sqlite --index-base 1
+```
+
+Use `MATCH_second.sqlite` for each second half. GSR suffix numbering is one-based; curated MOT numbering is zero-based. Raw videos, annotations, credentials, model binaries, executed notebooks, footage previews and native-frame caches remain local and are excluded from Git. Published derived tables and the offline dashboard can be inspected without downloading footage.
+
+## Run the pipeline
+
+The four study YAMLs define sources, intervals, models, identities and calibration. On a fresh clone, remove `pipeline.cached_tracks` when the referenced local tracker caches are absent. The published fitted mappings apply only to their unchanged source cameras. Study identity association needs the prepared reference indexes.
+
+```powershell
+# Inspect a short pilot before a costly extraction:
 uv run --no-sync python -m src.cli inspect --config configs/pilot.yaml
 uv run --no-sync python -m src.cli pilot --config configs/pilot.yaml
-```
 
-The 60-second, 2-fps pilot audits image quality/runtime. Its IDs are frame-local, and sparse samples cannot support cadence. Manual crop judgments are saved separately from confidence scores.
-
-One YOLOv8n experiment used **387 train / 100 validation / 100 held-out-match tiles**, after 13 doubtful training images were quarantined. Source frames were split before tiling, with a 30-second development gap. Staff/referee proposals were visually reviewed; original MOT alignment was sampled. Labels are partly model-assisted, not a new benchmark.
-
-**15 epochs**, batch 4, freeze 10, AMP and seed 42 completed in approximately **258 seconds including evaluations**. Validation mAP50–95: pretrained **0.710**, adapted **0.680**. The baseline was therefore retained; selected held-out mAP50–95 was **0.723**. Do not run another adaptation automatically.
-
-```powershell
-# For a fresh dataset; inspect/correct labels before marking the manifest reviewed:
-uv run --no-sync python -m src.cli prepare-detector configs/detector_sources.json
-uv run --no-sync python -m src.cli train-detector --epochs 15
-```
-
-The single-run registry refuses repeat training. Scores depend on label quality. The principal long videos are analysis inputs, not millions of training frames.
-
-## Calibration, tracking and poses
-
-The curved panorama fails a single raw-pixel homography. `calibrate.py` tests homography, local affine interpolation and rational planar warps on withheld reference points. The simplest passing method is chosen, with convex-hull/denominator guards. Both study cameras select a quadratic rational warp. Ordinary planar views can use `pixel_to_world` with a validated homography. Ground-plane calibration cannot turn elevated hips into ground positions or vertical meters.
-
-```powershell
-uv run --no-sync python -m src.cli fit-field data/hub/raw/117093/117093_keypoints.json --output results/phase2/calibration/117093.json
-uv run --no-sync python scripts/evaluate_tracking.py
+# Resume the configured study; GPU stages run sequentially:
 uv run --no-sync python scripts/run_study.py
 uv run --no-sync python scripts/finalize_phase3.py
+
+# Baselines, trends, sensitivity, comparisons, figures and dashboard:
+uv run --no-sync python -m src.cli analyze
 ```
 
-The driver resumes completed stages from [study.json](data/manifests/study.json) and runs GPU work serially. Completed caches must match source/settings; partial attempts never count as complete. Inspect a failure and choose a fresh output directory before retrying vision stages.
+Existing matching vision outputs are reused. Full sensitivity analysis requires local frame-level caches; published summary tables alone do not replace them. The curated detector experiment is optional and is not repeated automatically. Its single-run registry prevents accidental retraining.
 
-ByteTrack runs at 12.5 fps; native observations are 25 fps. Temporary tracklet IDs and persistent player identities are separate. The principal study uses **annotation-assisted identity association**, constrained by kit color, independently detected ground anchors and global matching. Reference positions never replace measured coordinates. This accelerates review but is not autonomous identity accuracy. Independent raw tracker tables remain available.
-
-The separate held-out MOT audit uses no hints. It reports known-player recall by size and consecutive observed switches, not full IDF1/HOTA or all-person precision, because staff labels are incomplete.
-
-Losses, ambiguous associations, invalid crops and failed calibration remain gaps. Short 40-ms box propagation is tagged. Shadow-aware HSV checks use only dominant kit palettes; mixed palettes remain unknown. Recently verified, still-visible tracklets have a bounded 0.8-second continuity check with motion/overlap/reference limits. Missing detections and new tracklets are never filled. Background registration flags camera motion rather than recalibrating moving footage. The staged study retains one consistent detector box-bottom ground anchor.
-
-Pretrained **YOLOv8m-Pose** is selected after a fixed ten-minute audit: joint-confidence coverage improved from 173/255 to 249/255 crops compared with YOLOv8s-Pose, with anatomical overlays inspected. No pose training is used. Native padded crops are batched at most eight, and coordinates are restored using their clipped source origins. Low-confidence anatomy remains missing.
-
-```powershell
-uv run --no-sync python -m src.cli extract --config configs/study_117093_second.yaml
-uv run --no-sync python -m src.cli pose-pass results/phase2/study/117093_second_identity_v3/keypoints_positions.csv `
-  --config configs/study_117093_second.yaml --output results/phase3/study_identity_v3/117093_second
-uv run --no-sync python -m src.cli metrics results/phase3/study_identity_v3/117093_second/keypoints_positions.csv `
-  --output results/metrics_csv/117093_second
-```
-
-Existing vision outputs are preserved; metrics can be recomputed cheaply. For a new permitted local video, edit the YAML paths, duration/offset and validated ground mapping. Run `select-player --config ...` to save initial ByteTrack IDs, then set `reference_assisted_identity: false` and each target's `initial_tracklet_id`. Later ambiguous reappearances require review.
-
-For reviewed reappearances, each target can supply `reviewed_tracklets` with non-overlapping source-video intervals (`start_seconds`, `end_seconds`, `tracklet_id`, `reviewed: true`). Outside reviewed intervals the target remains missing. Field clicks on local Windows are supported by:
-
-```powershell
-uv run --no-sync python scripts/calibrate_click.py --config configs/my_video.yaml `
-  --world-points configs/field_references.example.json --output data/calibration/my_points.json
-```
-
-Use known visible pitch features and at least eight distributed correspondences so some can be withheld for validation. The example assumes a 105×68-meter pitch. The supplied study assets make this interactive step unnecessary. The click UI is a local desktop helper, not a Colab widget.
-
-## Metrics and eligibility
-
-| Feature | Meaning and units |
-|---|---|
-| Average speed | Smoothed observed ground-path distance / valid time, m/s |
-| Peak speed | Maximum supported approximately one-second average, m/s |
-| High-intensity running rate | Distance at ≥5.5 m/s per valid observed minute |
-| Cadence | Same-leg cycles/s, not alternating step frequency |
-| Stride-length proxy | Ground-path distance per same-leg cycle, meters |
-| Knee excursion | 95th–5th percentile 2D flexion per cycle, degrees |
-| Vertical-motion proxy | Hip image oscillation / body-box height, dimensionless |
-
-Smoothing and displacement never cross gaps, clip boundaries or tracklet switches. Speeds above 12 m/s are rejected. Gait requires running at 2–9 m/s for at least four seconds and ≤30° heading spread over two seconds; severe overlapping boxes are excluded. These guards do not classify every jump/tackle perfectly.
-
-Cadence requires at least four credible same-leg peaks, amplitude/periodicity support and compatible left/right periods. Small confidence holes use Lomb–Scargle on observed samples; coordinates are never filled. At least 80% signal observations and no missing span over 0.16 s are required. Peaks are oscillation landmarks, not sensor-validated foot strikes.
-
-120-second windows use 60-second display steps and 120-second inference steps. Movement needs 70% observed ground-position exposure. Gait needs 20 accepted-cycle seconds and ten same-leg cycles, plus feature-specific finite observations. Unsupported values stay NaN. Speed, source body scale and projected motion strata help later comparisons but do not remove all projection confounding.
-
-## Outputs and verification
-
-| Folder | Outputs |
-|---|---|
-| `results/phase1/` | Environment, dataset/source/schema audits and manually reviewed sparse pilot |
-| `results/phase2/` | Training comparison, calibrated mappings, autonomous audit, study track/anchor CSVs, links, gaps, camera checks, previews |
-| `results/phase3/study_identity_v3/` | Final source-coordinate keypoints, flags, native skeleton audit montage, runtime/VRAM; earlier runs remain archived separately |
-| `results/metrics_csv/` | Frame Parquet, running bouts, gait cycles, window CSVs and comparability strata |
-| `results/plots/` | Combined metric plots, pitch trajectories and coverage |
-| `results/phase4/` | Baselines, normalized windows, trends, sensitivity, paired comparisons, status tables, eight metric panels, dashboard, annotated demo and broadcast audit |
-| `results/completion_report.json` | Verified completion of phases 1–4, with scientific availability separate |
-| `results/reproducibility.json` | Delivered source/artifact hashes and upstream provenance |
-
-Source-frame/video time and configured match time remain separate. The second-half offset is explicitly 2700 seconds; it omits first-half stoppage time. Sequential decoding preserves annotation indices but creates prefix decode overhead. Sampled/montage previews are labeled honestly.
+The end-to-end notebook uses the same modules:
 
 ```powershell
 uv run --no-sync jupyter lab notebooks/pipeline_demo.ipynb
-uv run --no-sync pytest -q
-uv run --no-sync ruff check src scripts tests main.py
 ```
 
-[pipeline_demo.ipynb](notebooks/pipeline_demo.ipynb) runs one sample through the same modules and reuses complete caches. It uses the combined study for final analysis when available, and can produce a one-clip analysis otherwise. Tests use encoded video and independent synthetic controls for nonzero PTS origin, gaps, crop offsets, calibration, known speed/cadence, camera motion and missing observations. See [LIMITATIONS.md](LIMITATIONS.md). Video, credentials, weights and generated outputs are excluded from Git.
+For **a new local video**, copy a YAML, set new source/output paths and times, establish and validate its field mapping, then use `select-player` with reference assistance disabled to configure the initial target tracklet. Reviewed later tracklet intervals can handle reappearances. Run `extract`, `pose-pass` and `metrics`, then configure the new cohort's analysis inputs. See [the detailed new-video workflow](explanation.md#142-a-new-permitted-local-video). A fixed map is suitable only while the camera geometry remains valid.
 
-## Phase 4: analyze and deliver
+## Rebuild the React dashboard
 
-```powershell
-# Recompute analysis from final metrics; CPU only, no repeat training:
-uv run --no-sync python -m src.cli analyze
-# Optional rerun of the completed separate broadcast audit (GPU):
-uv run --no-sync python -m src.broadcast_audit
-# Render the continuous reviewed study excerpt from cached joints:
-uv run --no-sync python scripts/create_annotated_demo.py
-uv run --no-sync python scripts/execute_notebook.py
-```
-
-Open [dashboard.html](results/phase4/dashboard.html) in a browser. It is standalone and embeds Plotly locally; no server or CDN is required. Choose a player to inspect physical values, own-baseline changes, availability/status, early/late summaries and observed ground trajectories. The native 25-fps [annotated demo](results/phase4/annotated_demo.mp4) shows boxes, projected skeleton, valid speed and a minimap on a continuous ten-second excerpt.
-
-The dashboard now uses **React with a liquid-glass interface**, dark/light themes and a responsive mobile layout. Its six sections cover overview, movement, gait cycles, pitch mapping, evaluation and methods. Controls support player/period selection, physical or baseline-normalized measurements, chart-point exposure inspection, gait speed/leg filters, trajectory playback, occupancy mapping, searchable data tables and CSV/JSON export. Baseline availability, confidence qualifications, uncertainty, paired-test eligibility and model evaluation remain visible.
-
-For frontend development, use a current Node.js installation and the separate locked npm environment:
+After editing JSX/build source, install Node.js and use the locked frontend environment:
 
 ```powershell
 npm --prefix dashboard ci
@@ -173,14 +141,38 @@ npm --prefix dashboard run build
 uv run --no-sync python scripts/render_dashboard.py
 ```
 
-The committed React bundle lets normal Python analysis runs regenerate the dashboard without requiring Node.js. `render_dashboard.py` refreshes presentation from saved results without repeating vision inference or trend analysis. When frame caches are absent in a fresh clone, the renderer can reuse embedded trajectories only from the same recorded analysis snapshot. Opening the finished HTML requires no installation or network access. See [dashboard/README.md](dashboard/README.md) for frontend details.
+Then reopen/refresh `results/phase4/dashboard.html`. The renderer rebuilds presentation from saved evidence without rerunning vision or statistical analysis. The committed `dashboard/assets/app.js` means Node.js is unnecessary for normal Python exports when the client source has not changed. When local trajectory caches are absent, the renderer can reuse embedded trajectories only from the same recorded analysis snapshot.
 
-The own-player baseline uses the first 600 elapsed seconds of the early clip, at least three eligible windows and 420 eligible movement seconds. A_blue_36 (389.88 seconds) and B_white_17 (two eligible windows) fail this gate; their normalized movement trends are unavailable. B_white_9 has an available baseline. Zero baselines never produce percentage changes.
+## Measurements and statistics
 
-Descriptive trends use six or more contiguous nonoverlapping windows and lag-1 HAC uncertainty, with Holm correction per player. PELT requires eight windows, three before/after, a material downward change, and penalty agreement. Sensitivity checks smoothing 0.6/0.8/1.2 seconds, window sizes 120/180/240 seconds, and penalties 2/3/4 times log(n). Missing windows and clip boundaries break sequences. A candidate must survive smoothing and window changes; no supported onset remains in this study. Cadence and vertical motion have no universally negative fatigue direction and stay descriptive when available.
+Movement metrics are average speed, sustained peak speed, running-speed p90 and high-intensity distance per observed minute. Gait metrics are same-leg cadence, stride-length proxy, projected vertical motion and knee-flexion excursion. Body motion in image space is not physical vertical height.
 
-Only A_blue_36 qualifies for early/late comparison: average speed **−12.5%**, sustained peak **−10.2%**, running-speed p90 **−5.8%**, high-intensity distance rate **−37.0%**. These are selected segment changes, not full-half averages or fatigue labels. With one eligible paired player, no population significance test is run. Verified substitutions can be supplied in `study.json` under `verified_substitutions`, keyed by player ID, with `match_seconds`, `verified: true`, and a nonempty `source`; none are provided for this cohort.
+Primary inference uses **120-second nonoverlapping windows**; display windows step by 60 seconds. Coverage and accepted-cycle gates determine which values are usable. No smoothing/displacement crosses identity breaks or missing segments. Own-player baselines, lag-1 HAC regression uncertainty, Holm correction, PELT searches and smoothing/window/penalty sensitivity support interpretation. Early/late comparisons use players as the independent unit; Wilcoxon is gated on sufficient paired players. See [the equations and statistical explanation](explanation.md#7-feature-engineering-the-measurements-and-equations).
 
-The five independent [SoccerNet-GSR test clips](https://huggingface.co/datasets/SoccerNet/SN-GSR-2024) provide a short broadcast stress audit: 300 frames at about 2 fps, detection recall 85.3–94.1%, and pose availability on a deliberately bounded large-player sample. These clips cannot estimate cadence/fatigue. Camera pan/zoom invalidates a fixed map for most sampled frames. The downloader selects compressed archive members using checked byte ranges and CRC/SHA checks instead of copying the entire archive. See the [official upstream project](https://github.com/soccernet/sn-gamestate).
+## Outputs and checks
 
-`scripts/finalize_project.py` verifies tests, lint, lock, completed notebook, rendered dashboard QA, controls, video and plots before writing the completion and reproducibility reports. Run dashboard QA with `uv run --isolated --no-project --with playwright python scripts/dashboard_qa.py`; it uses the installed Edge browser and is separate from runtime dependencies. Then run `uv run --no-sync python scripts/finalize_project.py`. The delivered QA report is in `results/phase4/dashboard_qa.json`.
+| Location | Contents |
+|---|---|
+| `results/phase2/training/` | Detector experiment and comparison |
+| `results/phase2/calibration/` | Fitted field maps and held-out point errors |
+| `results/metrics_csv/` | Combined windows, accepted gait cycles, units and coverage |
+| `results/plots/` | Measurement-stage plots, trajectories and cycle/speed comparisons |
+| `results/phase4/plots/` | Eight final metric panels and early/late summary; canonical copies |
+| `results/phase4/` | Baselines, normalized windows, trends, sensitivity, comparison/status tables, dashboard and audit |
+| `results/completion_report.json` | Software completion and scientific availability |
+| `results/reproducibility.json` | Source/artifact hashes for the recorded delivery snapshot; local file |
+
+```powershell
+uv run --no-sync pytest -q
+uv run --no-sync ruff check src scripts tests main.py
+npm --prefix dashboard run format:check
+```
+
+Browser QA uses installed Microsoft Edge through an isolated Playwright environment:
+
+```powershell
+uv run --isolated --no-project --with playwright python scripts/dashboard_qa.py
+uv run --no-sync python scripts/finalize_project.py
+```
+
+The latest browser report records **34 passing checks**, zero JavaScript errors and zero external runtime requests, including all players, exports, empty states, pitch interactions, both themes and six mobile views. The finalizer checks tests, lint, dependency lock, completed notebook, dashboard hash, controls and required artifacts before recording completion. It needs the local executed outputs; a clone containing published summaries alone is not a complete inference workspace.

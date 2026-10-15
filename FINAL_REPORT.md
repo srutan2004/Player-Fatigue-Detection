@@ -132,11 +132,11 @@ The continuous annotated 10-second video contains 250 source-aligned frames at 2
 | Notebook and executed copy | `notebooks/pipeline_demo.ipynb`, `results/phase4/pipeline_demo.executed.ipynb` |
 | Intermediate and windowed tables | `results/metrics_csv/`, `results/phase2/study/`, `results/phase3/study_identity_v3/` |
 | Normalized metrics, baselines, trends, sensitivity, pairs | `results/phase4/*.csv` |
-| Final static panels | `results/phase4/plots/`, copied under `results/plots/phase4/` |
+| Final static panels | `results/phase4/plots/` (canonical copies) |
 | Interactive dashboard | `results/phase4/dashboard.html` |
 | Continuous box/skeleton/speed/minimap preview | `results/phase4/annotated_demo.mp4` |
 | Five broadcast audit sheets/tables | `results/phase4/broadcast_audit/` |
-| Setup, methodology and limitations | `README.md`, `LIMITATIONS.md`, both implementation plans |
+| Setup, full explanation and limitations | `README.md`, `explanation.md`, `LIMITATIONS.md`, both implementation plans |
 | Completion/checks and file hashes | `results/completion_report.json`, `results/phase4/verification.json`, `results/reproducibility.json` |
 
 Scientific acceptance is quality-dependent: software execution and delivery are complete;
